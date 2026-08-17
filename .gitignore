@@ -1,0 +1,135 @@
+## ---------------------------------------------
+## .NET build output
+## ---------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+build/
+bld/
+[Ll]ogs/
+
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+*.so
+*.dylib
+*.cache
+*.ilk
+*.iobj
+*.ipdb
+*.tlog
+*.tmp
+*.tmp_proj
+*.log
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+.nuget/
+
+# MSBuild
+*.binlog
+msbuild.log
+msbuild.err
+msbuild.wrn
+MSBuild_Logs/
+
+## ---------------------------------------------
+## Test results, coverage, reports
+## ---------------------------------------------
+[Tt]est[Rr]esult*/
+TestResults/
+*.trx
+TestResult.xml
+nunit-*.xml
+*.VisualState.xml
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+coverage*.info
+[Cc]overage/
+*.dotCover
+OpenCover/
+allure-results/
+allure-report/
+.allure/
+
+# UI/API automation artifacts
+[Ss]creenshots/
+[Vv]ideos/
+[Rr]eports/
+[Dd]ownloads/
+selenium-debug.log
+chromedriver.log
+geckodriver.log
+*.har
+
+## ---------------------------------------------
+## User-specific / IDE files
+## ---------------------------------------------
+# Visual Studio / Rider per-user files
+*.user
+*.userosscache
+*.userprefs
+*.suo
+*.sln.docstates
+*.DotSettings.user
+.vs/
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.resharper
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+
+## ---------------------------------------------
+## Secrets and local configuration
+## ---------------------------------------------
+.env
+.env.*
+!.env.example
+appsettings.Local.json
+appsettings.*.local.json
+secrets.json
+*.secrets.json
+*.pfx
+*.p12
+*.key
+*.pem
+launchSettings.json
+
+## ---------------------------------------------
+## OS / editor noise
+## ---------------------------------------------
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+*~
+*.swp
+*.swo
+*.bak
+*.orig
+*.rej
