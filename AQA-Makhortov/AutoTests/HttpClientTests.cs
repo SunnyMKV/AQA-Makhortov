@@ -1,9 +1,10 @@
 ﻿using System.Net.Http.Json;
 using System.Text.Json;
+using AQA_Makhortov.DTO.UserApiDTO;
 
-namespace AQA_Makhortov;
+namespace AQA_Makhortov.AutoTests;
 
-public class Tests
+public class HttpClientTests
 {
     private static HttpClient _client;
     
@@ -29,8 +30,8 @@ public class Tests
     {
         using HttpResponseMessage response = await _client.GetAsync("users/2");
         string jsonGet = await response.Content.ReadAsStringAsync();
-        UserResponseDto userResponse = JsonSerializer.Deserialize<UserResponseDto>(jsonGet);
-        UserDataDto user = userResponse.Data;
+        UserResponseDTO userResponse = JsonSerializer.Deserialize<UserResponseDTO>(jsonGet);
+        UserDataDTO user = userResponse.Data;
     }
     
     [Test]
