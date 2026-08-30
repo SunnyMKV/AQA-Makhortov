@@ -1,3 +1,4 @@
+using AQA_Makhortov.DTO.UserApiDTO;
 using Refit;
 
 namespace AQA_Makhortov.Interfaces
@@ -6,7 +7,7 @@ namespace AQA_Makhortov.Interfaces
     public interface IUserApi
     {
         [Get ("/users/{id}")]
-        Task<UserResponseDto> GetUserAsync(int id);
+        Task<UserResponseDTO> GetUserAsync(int id);
 
         [Post("/users")]
         Task<CreateUserResponseDTO> CreateUserAsync([Body] CreateUserRequestDTO request);

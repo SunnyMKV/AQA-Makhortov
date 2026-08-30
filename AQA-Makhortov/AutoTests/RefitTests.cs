@@ -1,9 +1,10 @@
 using System.Net;
+using AQA_Makhortov.DTO.UserApiDTO;
 using AQA_Makhortov.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 
-namespace AQA_Makhortov
+namespace AQA_Makhortov.AutoTests
 {
     public class RefitTests
     {
