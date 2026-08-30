@@ -19,14 +19,14 @@ public class HttpClientTests
     }
 
     [Test]
-    public async Task Test1()
+    public async Task Test1_GetUserSuccessStatusCode()
     {
         using HttpResponseMessage response = await _client.GetAsync("users/2");
         response.EnsureSuccessStatusCode();
     }
     
     [Test]
-    public async Task Test2()
+    public async Task Test2_GetUserDataById()
     {
         using HttpResponseMessage response = await _client.GetAsync("users/2");
         string jsonGet = await response.Content.ReadAsStringAsync();
@@ -35,7 +35,7 @@ public class HttpClientTests
     }
     
     [Test]
-    public async Task Test3()
+    public async Task Test3_PostNewUserWithNameAndJob()
     {
         CreateUserRequestDTO newUserFields = new CreateUserRequestDTO
         {
@@ -48,7 +48,7 @@ public class HttpClientTests
     }
     
     [Test]
-    public async Task Test4()
+    public async Task Test4_PutUserWithNameAndJob()
     {
         CreateUserRequestDTO newUserFields = new CreateUserRequestDTO
         {
@@ -60,7 +60,7 @@ public class HttpClientTests
     }
 
     [Test]
-    public async Task Test5()
+    public async Task Test5_DeleteUserById()
     {
         using HttpResponseMessage response = await _client.DeleteAsync("users/2");
         response.EnsureSuccessStatusCode();

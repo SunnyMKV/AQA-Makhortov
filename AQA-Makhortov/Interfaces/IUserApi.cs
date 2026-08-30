@@ -8,10 +8,16 @@ namespace AQA_Makhortov.Interfaces
     {
         [Get ("/users/{id}")]
         Task<UserResponseDTO> GetUserAsync(int id);
+        
+        [Get ("/users/{id}")]
+        Task<ApiResponse<string>> GetUserStatusCodeAsync(int id);
 
         [Post("/users")]
         Task<CreateUserResponseDTO> CreateUserAsync([Body] CreateUserRequestDTO request);
         
+        [Put("/users/{id}")]
+        Task<ApiResponse<string>> PutUserAsync(int id, [Body] CreateUserRequestDTO request);
+            
         [Delete("/users/{id}")]
         Task<ApiResponse<string>> DeleteUserAsync(int id);
     }

@@ -1,6 +1,7 @@
 using System.Net;
 using AQA_Makhortov.DTO.UserApiDTO;
 using AQA_Makhortov.Interfaces;
+using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 
@@ -25,14 +26,22 @@ namespace AQA_Makhortov.AutoTests
         }
 
         [Test]
-        public async Task Test1()
+        public async Task Test1_GetUserSuccessStatusCode()
+        {
+            var response = await _api.GetUserStatusCodeAsync(2);
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+            Assert.That((int) response.StatusCode, Is.EqualTo(200));
+        }
+        
+        [Test]
+        public async Task Test2_GetUserDataById()
         {
             var result = await _api.GetUserAsync(2);
             Assert.That(result.Data.Id,Is.EqualTo(2));
         }
         
         [Test]
-        public async Task Test2()
+        public async Task Test3_PostNewUserWithNameAndJob()
         {
             var request = new CreateUserRequestDTO { Name  = "John", Job = "Apple" };
             var response = await _api.CreateUserAsync(request);
@@ -41,7 +50,16 @@ namespace AQA_Makhortov.AutoTests
         }
 
         [Test]
-        public async Task Test3()
+        public async Task Test4_PutUserWithNameAndJob()
+        {
+            var request = new CreateUserRequestDTO { Name = "John", Job = "Valve" };
+            var response = await _api.PutUserAsync(2, request);
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+            Assert.That((int) response.StatusCode, Is.EqualTo(200));
+        }
+
+        [Test]
+        public async Task Test5_DeleteUserById()
         {
             var deleteResult=  await _api.DeleteUserAsync(2);
             Assert.That(deleteResult.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
