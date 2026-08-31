@@ -29,7 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="Resources\OrderData.json">
+      <None Update="Resources\*.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
