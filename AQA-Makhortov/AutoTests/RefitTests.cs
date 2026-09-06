@@ -1,7 +1,7 @@
 using System.Net;
+
 using AQA_Makhortov.DTO.UserApiDTO;
-using AQA_Makhortov.Interfaces;
-using FluentAssertions;
+using AQA_Makhortov.Interfaces.UserApiInterfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 

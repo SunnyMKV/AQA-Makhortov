@@ -1,7 +1,7 @@
 using System.Text.Json;
+
 using AQA_Makhortov.DTO.UsersDataDTO;
 using FluentAssertions;
-using FluentAssertions.Execution;
 
 namespace AQA_Makhortov.AutoTests;
 
