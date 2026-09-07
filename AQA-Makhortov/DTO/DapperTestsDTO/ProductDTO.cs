@@ -8,7 +8,7 @@
 
         string description,
 
-        long price,
+        double price,
 
         long stock,
 

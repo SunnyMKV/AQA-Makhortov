@@ -2,14 +2,14 @@
 {
     public record OrderDTO
     (
-        int id,
+        long id,
 
-        string userId,
+        long userId,
 
         string orderDate,
 
-        int status,
+        string status,
 
-        int totalPrice
+        double totalPrice
     );
 }
