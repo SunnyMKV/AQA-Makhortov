@@ -4,14 +4,14 @@
     (
         long id,
 
-        string userId,
+        long userId,
 
-        string productId,
+        long productId,
 
         long rating,
 
-        long comment,
+        string comment,
 
-        long createdAt
+        string createdAt
     );
 }
