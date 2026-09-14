@@ -1,6 +1,6 @@
 ﻿namespace AQA_Makhortov.DTO.BookStoreDTO;
 
-public record BookDTO(
+public record UserCreateResponseBookDTO(
     string Isbn,
     string Title,
     string SubTitle,

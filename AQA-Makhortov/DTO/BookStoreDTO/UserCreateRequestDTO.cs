@@ -1,5 +1,5 @@
 ﻿namespace AQA_Makhortov.DTO.BookStoreDTO;
 
-public record UserCreateBodyDTO(
+public record UserCreateRequestDTO(
     string UserName,
     string Password);

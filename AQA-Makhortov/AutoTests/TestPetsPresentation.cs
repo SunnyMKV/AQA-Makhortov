@@ -42,7 +42,7 @@ namespace AQA_Makhortov.AutoTests
         public async Task TestGetRandomPetFromPetList()
         {
             var pets = await _api.GetAllPetsAsync();
-            var randomPet = RandomizerHelper.GetRandomItem(pets.Data);
+            var randomPet = RandomHelper.GetRandomItem(pets.Data);
             var result = await _api.GetPetByIdAsync(randomPet.Id);
             result.Should().BeEquivalentTo(randomPet);
         }
