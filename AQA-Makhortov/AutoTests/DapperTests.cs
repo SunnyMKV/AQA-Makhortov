@@ -73,7 +73,26 @@ namespace AQA_Makhortov.AutoTests
             items.Any(x => x.ProductName == "iPhone 15").Should().BeTrue();
             items.Any(x => x.ProductName == "Anker PowerBank").Should().BeTrue();
         }
-        
+
+        [Test]
+        public async Task Test008CheckAccessoriesBuyersLiveInDifferentCities()
+        {
+            var repo = p.Provider.GetService<IOrderRepository>();
+            var cities = await repo.GetBuyerCitiesByCategoryAsync("Аксессуары");
+            cities.Distinct().Should().HaveCountGreaterThan(1);
+        }
+
+        [Test]
+        public async Task Test009CheckTvBuyersAlsoBuyAccessories()
+        {
+            var repo = p.Provider.GetService<IOrderRepository>();
+            var tvBuyers = await repo.GetBuyerUserIdsByCategoryAsync("Телевизоры");
+            var accessoryBuyers = (await repo.GetBuyerUserIdsByCategoryAsync("Аксессуары")).ToHashSet();
+
+            tvBuyers.Should().NotBeEmpty();
+            tvBuyers.Should().OnlyContain(userId => accessoryBuyers.Contains(userId));
+        }
+
         /*[Test] //генерация базы - раскомментить, а потом запустить тест разово
         public async Task InitialiseTest()
         {

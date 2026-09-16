@@ -1,6 +1,4 @@
 ﻿namespace AQA_Makhortov.DTO.BookStoreDTO;
 
-public record UserCreateResponseDTO(
-    string UserId,
-    string UserName,
+public record BookListDTO(
     List<UserCreateResponseBookDTO> Books);

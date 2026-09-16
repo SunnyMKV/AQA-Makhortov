@@ -22,7 +22,32 @@ public class OrderRepository  : IOrderRepository
                                                  "FROM Orders o " +
                                                  "JOIN OrderItems oi ON oi.OrderId = o.Id " +
                                                  "JOIN Products p ON p.Id = oi.ProductId " +
-                                                 "WHERE o.UserId = @userId AND o.Id = @orderId", new { userId, orderId }); 
+                                                 "WHERE o.UserId = @userId AND o.Id = @orderId", new { userId, orderId });
         return orderWithItems;
+    }
+
+    public async Task<IEnumerable<string>> GetBuyerCitiesByCategoryAsync(string categoryName)
+    {
+        await using var db = new SqliteConnection(_connection);
+        var cities = await db.QueryAsync<string>("SELECT DISTINCT a.City " +
+                                                   "FROM OrderItems oi " +
+                                                   "JOIN Orders o ON o.Id = oi.OrderId " +
+                                                   "JOIN Products p ON p.Id = oi.ProductId " +
+                                                   "JOIN Categories c ON c.Id = p.CategoryId " +
+                                                   "JOIN Addresses a ON a.UserId = o.UserId " +
+                                                   "WHERE c.Name = @categoryName", new { categoryName });
+        return cities;
+    }
+
+    public async Task<IEnumerable<long>> GetBuyerUserIdsByCategoryAsync(string categoryName)
+    {
+        await using var db = new SqliteConnection(_connection);
+        var userIds = await db.QueryAsync<long>("SELECT DISTINCT o.UserId " +
+                                                  "FROM OrderItems oi " +
+                                                  "JOIN Orders o ON o.Id = oi.OrderId " +
+                                                  "JOIN Products p ON p.Id = oi.ProductId " +
+                                                  "JOIN Categories c ON c.Id = p.CategoryId " +
+                                                  "WHERE c.Name = @categoryName", new { categoryName });
+        return userIds;
     }
 }
