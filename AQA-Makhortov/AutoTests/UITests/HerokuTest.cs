@@ -28,4 +28,35 @@ public class HerokuTests : BaseTest
         var expectedInvalidCredentialsMessageLabel = await invalidCredentialsMessageLabel.InnerTextAsync();
         expectedInvalidCredentialsMessageLabel.Should().Contain("Your username is invalid!");
     }
+
+    [Test]
+    public async Task DropDownTest()
+    {
+        await Page.GotoAsync("https://the-internet.herokuapp.com/dropdown");
+        await Assertions.Expect(Page).ToHaveTitleAsync("The Internet");
+        await Assertions.Expect(Page).ToHaveURLAsync("https://the-internet.herokuapp.com/dropdown");
+        var dropdown = Page.Locator("//select[@id='dropdown']");
+        await Assertions.Expect(dropdown).ToBeVisibleAsync();
+        await dropdown.SelectOptionAsync("1");
+        await Assertions.Expect(dropdown).ToHaveValueAsync("1");
+        var selectedOption = Page.Locator("option:checked");
+        await Assertions.Expect(selectedOption).ToHaveTextAsync("Option 1");
+        dropdown = Page.Locator("//select[@id='dropdown']");
+        await Assertions.Expect(dropdown).ToBeVisibleAsync();
+        await dropdown.SelectOptionAsync("2");
+        await Assertions.Expect(dropdown).ToHaveValueAsync("2");
+        selectedOption = Page.Locator("option:checked");
+        await Assertions.Expect(selectedOption).ToHaveTextAsync("Option 2");
+    }
+
+    [Test]
+    public async Task Should_Select_Sub_Item()
+    {
+        await Page.GotoAsync("https://demoqa.com/select-menu");
+        var dropdown = Page.Locator("#withOptGroup");
+        await dropdown.ClickAsync();
+        var option = Page.GetByText("Group 1, option 1");
+        await option.ClickAsync();
+        await Assertions.Expect(dropdown).ToContainTextAsync("Group 1, option 1");
+    }
 }
