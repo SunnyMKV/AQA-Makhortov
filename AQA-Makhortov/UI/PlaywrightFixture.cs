@@ -13,7 +13,7 @@ namespace AQA_Makhortov.UI
             Browser = await Playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
                 Headless = false,
-                SlowMo = 1500,
+                SlowMo = 1000,
                 Args = ["--start-maximized"]
             });
         }
